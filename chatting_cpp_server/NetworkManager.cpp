@@ -21,7 +21,7 @@ NetworkManager::NetworkManager()
     if (::bind(NET_SERVERSOCKET, (SOCKADDR*)&NET_SERVERADDR, sizeof(NET_SERVERADDR)) != 0)
     {
         std::cout << "[ERR] ServerSocket Bind Error Occurred. ErrorCode : " << WSAGetLastError() << std::endl;
-        exit(-3);
+        exit(-3); 
     }
 
     if (listen(NET_SERVERSOCKET, SOMAXCONN) == SOCKET_ERROR)

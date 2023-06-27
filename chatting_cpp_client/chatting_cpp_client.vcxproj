@@ -128,12 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NetworkManager.cpp" />
+    <ClCompile Include="NetworkManager_Client.cpp" />
     <ClCompile Include="PacketHandler.cpp" />
     <ClCompile Include="PacketProcessor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NetworkManager.h" />
+    <ClInclude Include="NetworkManager_Client.h" />
     <ClInclude Include="PacketEnums.h" />
     <ClInclude Include="PacketHandler.h" />
     <ClInclude Include="PacketProcessor.h" />
