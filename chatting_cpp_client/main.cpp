@@ -41,7 +41,6 @@ int main()
 
     std::cout << "[SYS] Connected to Server!" << std::endl;
 
-    // 서버에 접속한 후 연결을 유지하고 있도록 수정
     while (true)
     {
         char packet[PACKET_SIZE] = { 0, };
