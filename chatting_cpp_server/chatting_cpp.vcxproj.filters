@@ -5,50 +5,58 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="패킷 구조 정의">
+      <UniqueIdentifier>{1c36f5d8-5dbe-4e2d-86f4-e6b1eb10bfd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="데이터베이스">
+      <UniqueIdentifier>{ddf2d410-1ae6-4706-a65b-4a37e64b6185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="네트워크">
+      <UniqueIdentifier>{5007b589-f8ec-4e20-8f47-7cacf584b0b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="패킷 처리">
+      <UniqueIdentifier>{c7ea9fab-545c-4c1e-8b28-f0920199e8c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="PacketHandler.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="PacketProcessor.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="NetworkManager.cpp">
+      <Filter>네트워크</Filter>
     </ClCompile>
     <ClCompile Include="DatabaseManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>데이터베이스</Filter>
     </ClCompile>
-    <ClCompile Include="NetworkManager.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="PacketProcessor.cpp">
+      <Filter>패킷 처리</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketHandler.cpp">
+      <Filter>패킷 처리</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PacketEnums.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="PacketStructs.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>패킷 구조 정의</Filter>
     </ClInclude>
-    <ClInclude Include="PacketHandler.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="PacketProcessor.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="PacketEnums.h">
+      <Filter>패킷 구조 정의</Filter>
     </ClInclude>
     <ClInclude Include="DatabaseManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>데이터베이스</Filter>
     </ClInclude>
     <ClInclude Include="NetworkManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>네트워크</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketProcessor.h">
+      <Filter>패킷 처리</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketHandler.h">
+      <Filter>패킷 처리</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
