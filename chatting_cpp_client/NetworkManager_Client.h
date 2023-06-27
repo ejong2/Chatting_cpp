@@ -5,9 +5,7 @@
 //--Network-------------------------------------------------------------------
 #include <WinSock2.h>
 #include <Windows.h>
-#include <process.h>
 #include <mutex>
-#include <string>
 
 #define NET_PACKET_SIZE 512
 

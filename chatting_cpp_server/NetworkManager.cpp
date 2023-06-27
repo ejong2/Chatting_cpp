@@ -36,13 +36,24 @@ NetworkManager::NetworkManager()
 NetworkManager::~NetworkManager()
 {
     std::cout << "[SYS] ServerSocket [" << NET_SERVERSOCKET << "] Listen Finished!" << std::endl;
+
+    NETWORK_MUTEX.lock();
+    for (auto& pair : THREAD_POOL)
+    {
+        if (pair.second.joinable())
+        {
+            pair.second.join();
+        }
+    }
+    NETWORK_MUTEX.unlock();
+
     closesocket(NET_SERVERSOCKET);
     WSACleanup();
 }
 
 void NetworkManager::RunServer()
 {
-    while (true) // G_PROGRAMRUNNING을 참조할 수 없으므로 일단 무한루프로 대체합니다.
+    while (true) 
     {
         SOCKADDR_IN ClientAddr = { 0, };
         int szClientAddr = sizeof(ClientAddr);
@@ -53,5 +64,29 @@ void NetworkManager::RunServer()
             continue;
         }
         std::cout << "[SYS] ClientSocket [" << ClientSocket << "] Connected!" << std::endl;
+
+        // Spawn a new thread to handle the client socket
+        std::thread t(&NetworkManager::ProcessClientSocket, this, ClientSocket);
+        NETWORK_MUTEX.lock();
+        THREAD_POOL[ClientSocket] = std::move(t);
+        NETWORK_MUTEX.unlock();
     }
+}
+
+void NetworkManager::ProcessClientSocket(SOCKET ClientSocket)
+{
+    char RecvBuffer[NET_PACKET_SIZE] = { 0, };
+    int RecvBytes = 0;
+
+    while (true) 
+    {
+        memset(RecvBuffer, 0, sizeof(RecvBuffer));
+        RecvBytes = recv(ClientSocket, RecvBuffer, sizeof(RecvBuffer), 0);
+        if (RecvBytes <= 0) { break; }
+        //Retval = ProcessPacket(ClientSocket, &RecvBuffer[0]);
+        // 여기에서 패킷을 처리.
+    }
+
+    std::cout << "[SYS] ClientSocket [" << ClientSocket << "] Disconnected!" << std::endl;
+    closesocket(ClientSocket);
 }
