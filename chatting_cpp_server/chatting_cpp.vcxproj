@@ -129,7 +129,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DatabaseManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NetworkManager.cpp" />
+    <ClCompile Include="PacketHandler.cpp" />
+    <ClCompile Include="PacketProcessor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DatabaseManager.h" />
+    <ClInclude Include="NetworkManager.h" />
+    <ClInclude Include="PacketEnums.h" />
+    <ClInclude Include="PacketHandler.h" />
+    <ClInclude Include="PacketProcessor.h" />
+    <ClInclude Include="PacketStructs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
