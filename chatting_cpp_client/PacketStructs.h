@@ -18,70 +18,70 @@ struct ResponsePacket : public Packet
 };
 
 
-struct C2S_LOGIN_REQUEST : public Packet
+struct LOGIN_REQUEST : public Packet
 {
     char userID[50];
     char password[50];
 };
 
-struct S2C_LOGIN_RESPONSE : public ResponsePacket
+struct LOGIN_RESPONSE : public ResponsePacket
 {
     // 로그인 결과를 보여줄 추가 필드를 넣을 수 있습니다.
 };
 
-struct C2S_SIGNUP_REQUEST : public Packet
+struct SIGNUP_REQUEST : public Packet
 {
     char userID[50];
     char password[50];
 };
 
-struct S2C_SIGNUP_RESPONSE : public ResponsePacket
+struct SIGNUP_RESPONSE : public ResponsePacket
 {
     // 회원 가입 결과를 보여줄 추가 필드를 넣을 수 있습니다.
 };
 
-struct C2S_LOGOUT : public Packet
+struct LOGOUT : public Packet
 {
     char userID[50];
 };
 
-struct C2S_CHAT_MESSAGE : public Packet
-{
-    char userID[50];
-    char message[255];
-};
-
-struct S2C_CHAT_BROADCAST : public Packet
+struct CHAT_MESSAGE : public Packet
 {
     char userID[50];
     char message[255];
 };
 
-struct C2S_ROOM_CREATE : public Packet
+struct CHAT_BROADCAST : public Packet
+{
+    char userID[50];
+    char message[255];
+};
+
+struct ROOM_CREATE : public Packet
 {
     char userID[50];
     char roomName[50];
 };
 
-struct C2S_ROOM_JOIN : public Packet
+struct ROOM_JOIN : public Packet
 {
     char userID[50];
     char roomName[50];
 };
 
-struct C2S_ROOM_LEAVE : public Packet
+struct ROOM_LEAVE : public Packet
 {
     char userID[50];
     char roomName[50];
 };
 
-struct C2S_ROOM_DELETE : public Packet
+struct ROOM_DELETE : public Packet
 {
     char userID[50];
     char roomName[50];
 };
 
-struct C2S_ROOM_USER_LIST : public Packet
+struct ROOM_USER_LIST : public Packet
 {
     char roomName[50];
 };

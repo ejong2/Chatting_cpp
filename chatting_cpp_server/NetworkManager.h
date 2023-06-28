@@ -5,6 +5,7 @@
 //--Network-------------------------------------------------------------------
 #include <WinSock2.h>
 #include <Windows.h>
+#include <string>
 #include <thread>
 #include <mutex>
 #include <map>
@@ -25,7 +26,7 @@ private:
 
 private:
     std::map<SOCKET, std::thread> THREAD_POOL;
-
+   
 public:
     NetworkManager();
     ~NetworkManager();
@@ -33,5 +34,4 @@ public:
 public:
     void RunServer();
     void ProcessClientSocket(SOCKET ClientSocket);
-
 };

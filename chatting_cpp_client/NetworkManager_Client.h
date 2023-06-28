@@ -11,6 +11,8 @@
 
 #pragma comment (lib, "WS2_32.lib")
 
+typedef unsigned char BYTE;
+
 class NetworkManager_Client
 {
 private:
@@ -27,5 +29,6 @@ public:
 
 public:
     void RunClient();
+    void SendPacket(const BYTE* buffer, int size);
 };
 

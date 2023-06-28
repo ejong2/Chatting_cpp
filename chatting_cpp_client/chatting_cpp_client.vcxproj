@@ -127,10 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="client_main.cpp" />
     <ClCompile Include="NetworkManager_Client.cpp" />
     <ClCompile Include="PacketHandler.cpp" />
     <ClCompile Include="PacketProcessor.cpp" />
+    <ClCompile Include="UserService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NetworkManager_Client.h" />
@@ -138,6 +139,7 @@
     <ClInclude Include="PacketHandler.h" />
     <ClInclude Include="PacketProcessor.h" />
     <ClInclude Include="PacketStructs.h" />
+    <ClInclude Include="UserService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
