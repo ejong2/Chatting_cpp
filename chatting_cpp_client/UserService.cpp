@@ -1,9 +1,16 @@
 #include "UserService.h"
 
+
 void UserService::ShowMenu()
 {
     int option = 0;
-    std::string userID, password;
+
+    //userID, password를 char[] 형태로 선언
+    char userID[32] = { 0, };
+    char password[32] = { 0, };
+
+    
+
     while (true)
     {
         std::cout << "1. Register\n";
@@ -39,36 +46,27 @@ void UserService::ShowMenu()
     }
 }
 
-void UserService::SignUp(const std::string& userID, const std::string& password)
+void UserService::SignUp(std::string id, std::string pas)
 {
-    Packet signUpPacket;
-    packetHandler.MakeSignUpPacket(&signUpPacket, userID.c_str(), password.c_str());
+    PACKET_REQ_SIGNUP ReqPk = { 0, };
+    ReqPk.PkHeader.PacketID = (int)PacketID::C2S_SIGNUP_REQUEST;
+    ReqPk.PkHeader.PacketSize = sizeof(PACKET_REQ_SIGNUP);
+    strncpy_s(ReqPk.Password, pas.c_str(), sizeof(ReqPk.Password) - 1);
+    strncpy_s(ReqPk.UserName, id.c_str(), sizeof(ReqPk.UserName) - 1);
 
-    BYTE buffer[NET_PACKET_SIZE];
-    packetHandler.Serialize(&signUpPacket, buffer);
+    char Buffer[1024] = { 0, };
+    memcpy(Buffer, &ReqPk, sizeof(PACKET_REQ_SIGNUP));
 
-    networkManager.SendPacket(buffer, signUpPacket.size);
+    networkManager.SendPacket(Buffer, sizeof(PACKET_REQ_SIGNUP));
+}
+
+void UserService::Login(std::string userid, std::string password)
+{
+}
+
+void UserService::Logout(std::string userid)
+{
 }
 
 
-void UserService::Login(const std::string& userID, const std::string& password)
-{
-    Packet loginPacket;
-    packetHandler.MakeLoginPacket(&loginPacket, userID.c_str(), password.c_str());
 
-    BYTE buffer[NET_PACKET_SIZE];
-    packetHandler.Serialize(&loginPacket, buffer);
-
-    networkManager.SendPacket(buffer, loginPacket.size);
-}
-
-void UserService::Logout(const std::string& userID)
-{
-    Packet logoutPacket;
-    packetHandler.MakeLogoutPacket(&logoutPacket, userID.c_str());
-
-    BYTE buffer[NET_PACKET_SIZE];
-    packetHandler.Serialize(&logoutPacket, buffer);
-
-    networkManager.SendPacket(buffer, logoutPacket.size);
-}

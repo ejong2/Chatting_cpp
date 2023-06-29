@@ -21,7 +21,7 @@ NetworkManager::NetworkManager()
     if (::bind(NET_SERVERSOCKET, (SOCKADDR*)&NET_SERVERADDR, sizeof(NET_SERVERADDR)) != 0)
     {
         std::cout << "[ERR] ServerSocket Bind Error Occurred. ErrorCode : " << WSAGetLastError() << std::endl;
-        exit(-3); 
+        exit(-3);
     }
 
     if (listen(NET_SERVERSOCKET, SOMAXCONN) == SOCKET_ERROR)
@@ -53,7 +53,7 @@ NetworkManager::~NetworkManager()
 
 void NetworkManager::RunServer()
 {
-    while (true) 
+    while (true)
     {
         SOCKADDR_IN ClientAddr = { 0, };
         int szClientAddr = sizeof(ClientAddr);
@@ -75,19 +75,22 @@ void NetworkManager::RunServer()
 
 void NetworkManager::ProcessClientSocket(SOCKET ClientSocket)
 {
-    char RecvBuffer[NET_PACKET_SIZE] = { 0, };
-    int RecvBytes = 0;
-
-    while (true) 
+    char buf[1024] = { 0, };
+    while (true)
     {
-        memset(RecvBuffer, 0, sizeof(RecvBuffer));
-        RecvBytes = recv(ClientSocket, RecvBuffer, sizeof(RecvBuffer), 0);
-        if (RecvBytes <= 0) { break; }
-        //Retval = ProcessPacket(ClientSocket, &RecvBuffer[0]);
-        // 여기에서 패킷을 처리.
+        int recvLen = recv(ClientSocket, buf, sizeof(buf), 0);
+        if (recvLen <= 0)
+        {
+            break;
+        }
+
+        memcpy(buf, )
+
+        //std::cout << "[SYS] ClientSocket [" << ClientSocket << "] Received Data : " << buf << std::endl;
+        //send(ClientSocket, buf, recvLen, 0);
     }
 
-    std::cout << "[SYS] ClientSocket [" << ClientSocket << "] Disconnected!" << std::endl;
     closesocket(ClientSocket);
-}
+    std::cout << "[SYS] ClientSocket [" << ClientSocket << "] Disconnected!" << std::endl;
 
+}

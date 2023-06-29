@@ -13,11 +13,11 @@ private:
     NetworkManager_Client& networkManager;
 
 public:
-    UserService(NetworkManager_Client& manager) : networkManager(manager) {}
-
+    UserService(NetworkManager_Client& networkManager) : networkManager(networkManager) {}
 public:
     void ShowMenu();
-    void SignUp(const std::string& userID, const std::string& password);
-    void Login(const std::string& userID, const std::string& password);
-    void Logout(const std::string& userID);
+
+    void SignUp(std::string userid, std::string password);
+    void Login(std::string userid, std::string password);
+    void Logout(std::string userid);
 };

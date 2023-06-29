@@ -8,7 +8,7 @@ enum PacketID
     C2S_SIGNUP_REQUEST,  // 클라이언트에서 서버로 회원가입 요청
     S2C_SIGNUP_RESPONSE, // 서버에서 클라이언트로 회원가입 응답
 
-    C2S_LOGOUT,          // 클라이언트에서 서버로 로그아웃 요청
+    C2S_LOGOUT_REQUEST,          // 클라이언트에서 서버로 로그아웃 요청
 
     C2S_CHAT_MESSAGE,    // 클라이언트에서 서버로 채팅 메시지 전송 요청
     S2C_CHAT_BROADCAST,  // 서버에서 클라이언트로 채팅 메시지 전송 (모든 채팅 참가자에게)

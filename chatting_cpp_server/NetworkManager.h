@@ -12,6 +12,9 @@
 
 #define NET_PACKET_SIZE 512
 
+#include "PacketHandler.h"
+#include "PacketProcessor.h"
+
 #pragma comment (lib, "WS2_32.lib")
 
 class NetworkManager
@@ -23,6 +26,9 @@ private:
     const char*                  NET_SERVER_IPV4 = "127.0.0.1";
     const int                    NET_SERVER_PORT = 5001;
     std::mutex                   NETWORK_MUTEX;
+
+    PacketHandler                PACKET_HANDLER;
+    PacketProcessor              PACKET_PROCESSOR;
 
 private:
     std::map<SOCKET, std::thread> THREAD_POOL;

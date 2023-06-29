@@ -29,6 +29,6 @@ public:
 
 public:
     void RunClient();
-    void SendPacket(const BYTE* buffer, int size);
+    void SendPacket(const char* buffer, int size);
 };
 

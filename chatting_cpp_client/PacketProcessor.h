@@ -10,12 +10,13 @@ using namespace std;
 class PacketProcessor
 {
 public:
-    void processPacket(Packet* packet);
+    // TODO : 패킷 처리
 
 private:
-    void processSignUpPacket(Packet* packet);
-    void processLoginPacket(Packet* packet);
-    void processLogoutPacket(Packet* packet);
-    //void processChatPacket(Packet* packet);
+    // TODO : 회원가입 처리 메서드
+     
+    // TODO : 로그인 처리 메서드
+     
+    // TODO : 로그아웃 처리 메서드
 };
 

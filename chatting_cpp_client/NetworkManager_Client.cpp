@@ -36,7 +36,7 @@ NetworkManager_Client::~NetworkManager_Client()
 void NetworkManager_Client::RunClient()
 {
 
-    while (true) // G_PROGRAMRUNNING을 참조할 수 없으므로 일단 무한루프로 대체합니다.
+    while (true)
     {
 
         char packet[NET_PACKET_SIZE] = { 0, };
@@ -59,7 +59,7 @@ void NetworkManager_Client::RunClient()
     }
 }
 
-void NetworkManager_Client::SendPacket(const BYTE* buffer, int size)
+void NetworkManager_Client::SendPacket(const char* buffer, int size)
 {
     if (send(NET_CLIENTSOCKET, (const char*)buffer, size, 0) == SOCKET_ERROR)
     {
